@@ -97,6 +97,12 @@ div#grid{
 	font-family: Arial;
 	font-size: 3rem;
 	vertical-align: middle;
+	
+	h1#etiqueta.feliz{
+	font-family: Arial;
+	font-size: 3em;
+	color: #080909;
+	}
 }
 
 
