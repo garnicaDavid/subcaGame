@@ -116,6 +116,7 @@ function felicitar(){
 	let crearEtiqueta = document.createElement('h1');
 	crearEtiqueta.textContent= "¡¡FELICIDADES!!";
 	crearEtiqueta.id = "etiqueta";
+	crearEtiqueta.classList = "feliz";
 	mensaje.appendChild(crearEtiqueta)
 }
 
