@@ -1,0 +1,251 @@
+//Primero creamos los array con las posiciones de subcas como Objetos.
+//Tendremos 4 botones que representaran el color de cada zona
+//Al coincidir la Posición de subca con la zona, eliminará la subca
+//del array que la contiene, así 1 por 1 hasta dejar cada array vacío.
+
+
+let zonaA = [   {subca:"AND000", color:"ROJO"},
+				{subca:"OCS060", color:"ROJO"},
+				{subca:"OCS061", color:"ROJO"},
+				{subca:"OCS062", color:"ROJO"},
+				{subca:"OCS063", color:"ROJO"},
+				{subca:"OCS064", color:"ROJO"},
+				{subca:"OCS065", color:"ROJO"},
+				{subca:"OCS066", color:"ROJO"},
+				{subca:"OCS069", color:"ROJO"},
+				{subca:"OCS070", color:"ROJO"},
+				{subca:"OCS071", color:"ROJO"},
+				{subca:"URB160", color:"ROJO"},
+				{subca:"URB161", color:"ROJO"},
+				{subca:"URB162", color:"ROJO"},
+				{subca:"URB163", color:"ROJO"},
+				{subca:"URB164", color:"ROJO"},
+				{subca:"URB165", color:"ROJO"},
+				{subca:"URB166", color:"ROJO"},
+				{subca:"URB167", color:"ROJO"},
+				{subca:"URB168", color:"ROJO"},
+				{subca:"SCO1", color:"ROJO"},
+				{subca:"SER1", color:"ROJO"},
+				{subca:"SRU1", color:"ROJO"},
+				{subca:"SBH1", color:"ROJO"},
+				{subca:"STD1", color:"ROJO"}];
+
+let zonaB = [   {subca:"AND010", color:"AMARILLO"},
+				{subca:"AND011", color:"AMARILLO"},
+				{subca:"HOP300", color:"AMARILLO"},
+				{subca:"OCS050", color:"AMARILLO"},
+				{subca:"OCS051", color:"AMARILLO"},
+				{subca:"OCS052", color:"AMARILLO"},
+				{subca:"OCS053", color:"AMARILLO"},
+				{subca:"OCS067", color:"AMARILLO"},
+				{subca:"OCS068", color:"AMARILLO"},
+				{subca:"URB150", color:"AMARILLO"},
+				{subca:"URB151", color:"AMARILLO"},
+				{subca:"WEB200", color:"AMARILLO"},
+				{subca:"WEB202", color:"AMARILLO"},
+				{subca:"PCK350", color:"AMARILLO"},
+				{subca:"SBU1", color:"AMARILLO"},
+				{subca:"SBU2", color:"AMARILLO"},
+				{subca:"SBU3", color:"AMARILLO"},
+				{subca:"SMQ1", color:"AMARILLO"},
+				{subca:"SRO1", color:"AMARILLO"},
+				{subca:"SSF1", color:"AMARILLO"},
+				{subca:"SCF2", color:"AMARILLO"},
+				{subca:"SLA1", color:"AMARILLO"}];
+
+let zonaC = [   {subca:"COR125", color:"AZUL"},
+				{subca:"COR126", color:"AZUL"},
+				{subca:"URB175", color:"AZUL"},
+				{subca:"URB176", color:"AZUL"},
+				{subca:"URB177", color:"AZUL"},
+				{subca:"SST1", color:"AZUL"},
+				{subca:"STU1", color:"AZUL"},
+				{subca:"SCZ1", color:"AZUL"},
+				{subca:"SNQ1", color:"AZUL"},
+				{subca:"SJU1", color:"AZUL"},
+				{subca:"STW1", color:"AZUL"},
+				{subca:"SRV1", color:"AZUL"}];
+
+let zonaD = [   {subca:"AND025", color:"VERDE"}
+				{subca:"AND026", color:"VERDE"},
+				{subca:"AND027", color:"VERDE"},
+				{subca:"AND028", color:"VERDE"},
+				{subca:"AND029", color:"VERDE"},
+				{subca:"AND030", color:"VERDE"},
+				{subca:"AND031", color:"VERDE"},
+				{subca:"AND032", color:"VERDE"},
+				{subca:"AND033", color:"VERDE"},
+				{subca:"AND034", color:"VERDE"},
+				{subca:"AND035", color:"VERDE"},
+				{subca:"AND040", color:"VERDE"},
+				{subca:"SSJ1", color:"VERDE"},
+				{subca:"SVE1", color:"VERDE"},
+				{subca:"SLU1", color:"VERDE"},
+				{subca:"SME1", color:"VERDE"},
+				{subca:"COR140", color:"VERDE"},
+				{subca:"COR141", color:"VERDE"},
+				{subca:"OCA290", color:"VERDE"},
+				{subca:"OCA291", color:"VERDE"},
+				{subca:"URB190", color:"VERDE"},
+				{subca:"PCK390", color:"VERDE"},
+				{subca:"OCS090", color:"VERDE"}]
+
+const zonas = [zonaA, zonaB, zonaC, zonaD];
+//
+var numero;
+let inicio = new mezcladorSubca();
+
+
+//poner la primer subca.
+const etiqueta1 = document.getElementById("subca");
+let crearEtiqueta = document.createElement('h1');
+crearEtiqueta.id = "etiqueta";
+crearEtiqueta.classList.add(inicio.color);
+crearEtiqueta.setAttribute("value",inicio.color);
+crearEtiqueta.setAttribute("alt", inicio.subca);
+crearEtiqueta.textContent = inicio.subca;
+etiqueta1.appendChild(crearEtiqueta);
+
+
+//desactiva las funciones que están como atributo en los botones de HTML.
+function finalizar(){
+	document.getElementById("botonA").removeAttribute("onclick");
+	document.getElementById("botonB").removeAttribute("onclick");
+	document.getElementById("botonC").removeAttribute("onclick");
+	document.getElementById("botonD").removeAttribute("onclick");
+}
+
+//borro la etiqueta H1 de subcas y creo una etiqueta H3 de felicitaciones.
+function felicitar(){
+	const mensaje = document.getElementById("subca");
+	mensaje.removeChild;
+	mensaje.innerText = "";
+	let crearEtiqueta = document.createElement('h3');
+	crearEtiqueta.textContent= "¡¡FELICIDADES!!";
+	crearEtiqueta.id = "etiqueta";
+	crearEtiqueta.classList = "feliz";
+	mensaje.appendChild(crearEtiqueta)
+}
+
+//Retorna una nueva subca.
+function mezcladorSubca(){
+//función que retorna un número random.
+var num = (longitud) => Math.floor(Math.random()*longitud);
+
+let trueFalseInicio;
+let trueFalseFinal = false;
+let zonaNum;
+
+//Si en el array de cualquier zona se quedó vacía, elije otra zona.
+do{
+	trueFalseInicio = false;
+	zonaNum = zonas[num(zonas.length)];
+	if(zonaNum.length == 0){
+		trueFalseInicio = true;
+		//si todos los array de zonas se quedaron sin elementos, termina el programa.
+		if((zonaA.length == 0) && (zonaB.length == 0) && (zonaC.length == 0) && (zonaD.length == 0) ){
+			trueFalseFinal = true;
+			finalizar();
+			felicitar();
+			break;
+		}
+	}
+}
+while(trueFalseInicio);
+
+if(trueFalseFinal == false){
+//una subca de la zona.
+let numSubca = num(zonaNum.length);
+numero = numSubca;
+let letraColor = zonaNum[numSubca].color;
+let letra = zonaNum[numSubca].subca;
+this.subca = letra
+this.color = letraColor;
+}}
+
+
+
+//cambiar a otra posición de subcas.
+function cambiar(){
+	const cambiarEtiqueta =	document.getElementById("etiqueta");
+	remover(cambiarEtiqueta);
+	let subcaNueva = new mezcladorSubca();
+	cambiarEtiqueta.setAttribute("class", subcaNueva.color);
+	cambiarEtiqueta.setAttribute("value", subcaNueva.color);
+	crearEtiqueta.setAttribute("alt", subcaNueva.subca);
+	cambiarEtiqueta.textContent = subcaNueva.subca;
+}
+
+//Encontrar de que zona es la posición de subca, para así removerlo.
+function remover(cambiarEtiqueta){
+	let subcaCambiar = cambiarEtiqueta.getAttribute("alt");
+	let colorCambiar = cambiarEtiqueta.getAttribute("value");
+	switch(colorCambiar){
+		case "ROJO": eliminar(subcaCambiar, 0, colorCambiar);
+					break;
+		case "AMARILLO": eliminar(subcaCambiar, 1, colorCambiar);
+					break;
+		case "AZUL": eliminar(subcaCambiar, 2, colorCambiar);
+					break;
+		case "VERDE": eliminar(subcaCambiar, 3, colorCambiar);
+					break;
+	}
+}
+
+//Del array de tal zona, eliminará la posición de subca.
+function eliminar(eliminarSubca, posicion, colorRemover){
+	const objetoEliminar = {subca: eliminarSubca, color: colorRemover};
+	(zonas[posicion]).splice(numero,1);
+}
+//Funciones que validan si las posición de subca en pantalla es igual al color donde hagamos click.
+function validarA(){
+	let colorSubca =String(document.getElementById("etiqueta").getAttribute("value"));
+	if("ROJO" == colorSubca){
+		console.log(`El color de zona es ${colorSubca}`);
+		console.log("CORRECTO");
+		cambiar();
+	} else {
+		console.log(`El color de zona NO es ROJO`);
+		console.log("INCORRECTO");
+	}
+}
+
+function validarB(){
+	let colorSubca =String(document.getElementById("etiqueta").getAttribute("value"));
+	if("AMARILLO" == colorSubca){
+		console.log(`El color de zona es ${colorSubca}`);
+		console.log("CORRECTO");
+		cambiar();
+	} else {
+		console.log(`El color de zona NO es AMARILLO`);
+		console.log("INCORRECTO");
+	}
+}
+
+function validarC(){
+	let colorSubca =String(document.getElementById("etiqueta").getAttribute("value"));
+	
+	if("AZUL" == colorSubca){
+		console.log(`El color de zona es ${colorSubca}`);
+		console.log("CORRECTO");
+		cambiar();
+	} else {
+		console.log(`El color de zona NO es AZUL`);
+		console.log("INCORRECTO");
+	}
+}
+
+function validarD(){
+	let colorSubca =String(document.getElementById("etiqueta").getAttribute("value"));
+	if("VERDE" == colorSubca){
+		console.log(`El color de zona es ${colorSubca}`);
+		console.log("CORRECTO");
+		cambiar();
+	} else {
+		console.log(`El color de zona NO es VERDE`);
+		console.log("INCORRECTO");
+	}
+}
+
+
+
