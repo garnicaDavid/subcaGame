@@ -66,7 +66,7 @@ let zonaC = [   {subca:"COR125", color:"AZUL"},
 				{subca:"STW1", color:"AZUL"},
 				{subca:"SRV1", color:"AZUL"}];
 
-let zonaD = [   {subca:"AND025", color:"VERDE"}
+let zonaD = [   {subca:"AND025", color:"VERDE"},
 				{subca:"AND026", color:"VERDE"},
 				{subca:"AND027", color:"VERDE"},
 				{subca:"AND028", color:"VERDE"},
