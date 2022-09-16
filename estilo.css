@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 div#subca{
 	display: grid;
@@ -45,6 +45,32 @@ h1.zona{
 }
 
 
+div.final{
+	display: grid;
+	place-items: center;
+	margin-bottom: 30px;
+}
+
+div.contenedor{
+	text-align: center;
+	padding: 0px 50px;
+	border-radius: 10px;
+	background-color: #fef58d;
+	border: 1px solid black;
+}
+.font{
+	font-family: 'Nunito', sans-serif, 'Arial';
+	text-align: center;
+}
+
+
+h1.font{
+	font-size: 50px;
+}
+
+p{
+	font-size: 30px;
+}
 
 @media(min-width:1204px){
 	div#grid{
@@ -89,8 +115,13 @@ div#grid{
 	row-gap: 2em;
 }
 	h3#etiqueta.feliz{
-	font-family: Arial;
 	font-size: 300%;
+	color: #080909;
+	}
+
+h3#etiqueta.feliz{
+	text-align: center;
+	font-family: Arial;
 	color: #080909;
 	}
 }
@@ -107,9 +138,6 @@ div#grid{
 	grid-template-columns: 100%;
 
 }	
-	.div{
-
-	}
 	h1.zona{
 	display: table-cell;
 	font-family: Arial;
